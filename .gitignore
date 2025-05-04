@@ -1,0 +1,18 @@
+# Bytecode
+**/target/
+**/*.class
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
