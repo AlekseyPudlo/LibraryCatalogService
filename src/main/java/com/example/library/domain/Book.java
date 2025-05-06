@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -52,12 +54,15 @@ public class Book {
   // Constructor, getters, setters
   public Book() {}
 
-  public Book(String title, String isbn, LocalDate publishedDate, int pageCount, String description, Set<String> genres, Set<Author> authors) {
-    this.title = title;
-    this.isbn = isbn;
-    this.publishedDate = publishedDate;
-    this.pageCount = pageCount;
-    this.description = description;
+  public Book(String title, String isbn, LocalDate publishedDate, Integer pageCount, String description) {
+      this.title = title;
+      this.isbn = isbn;
+      this.publishedDate = publishedDate;
+      this.pageCount = pageCount;
+      this.description = description;
+      this.genres = new HashSet<>();
+      this.authors = new HashSet<>();
+      this.loans = new HashSet<>();
   }
 
   public Long getId() {
@@ -85,15 +90,15 @@ public class Book {
   }
 
   public Set<String> getGenres() {
-    return genres;
+    return Collections.unmodifiableSet(genres);
   }
 
   public Set<Author> getAuthors() {
-    return authors;
+    return Collections.unmodifiableSet(authors);
   }
 
   public Set<Loan> getLoans() {
-    return loans;
+    return Collections.unmodifiableSet(loans);
   }
 
   public void setTitle(String title) {
@@ -115,4 +120,31 @@ public class Book {
   public void setDescription(String description) {
     this.description = description;
   }
+
+  // Add / Remove collections
+  public void addGenre(String genre) {
+    this.genres.add(genre);
+  }
+
+  public void removeGenre(String genre) {
+    this.genres.remove(genre);
+  }
+
+  public void addAuthor(Author author) {
+    this.authors.add(author);
+  } 
+
+  public void removeAuthor(Author author) {
+    this.authors.remove(author);
+  }
+
+  public void addLoan(Loan loan) {
+    this.loans.add(loan);
+  }
+
+  public void removeLoan(Loan loan) {
+    this.loans.remove(loan);
+  }
+  
+  
 }
