@@ -48,4 +48,71 @@ public class Book {
 
   @OneToMany(mappedBy = "book")
   private Set<Loan> loans;
+
+  // Constructor, getters, setters
+  public Book() {}
+
+  public Book(String title, String isbn, LocalDate publishedDate, int pageCount, String description, Set<String> genres, Set<Author> authors) {
+    this.title = title;
+    this.isbn = isbn;
+    this.publishedDate = publishedDate;
+    this.pageCount = pageCount;
+    this.description = description;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getIsbn() {
+    return isbn;
+  }
+
+  public LocalDate getPublishedDate() {
+    return publishedDate;
+  }
+
+  public Integer getPageCount() {
+    return pageCount;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public Set<String> getGenres() {
+    return genres;
+  }
+
+  public Set<Author> getAuthors() {
+    return authors;
+  }
+
+  public Set<Loan> getLoans() {
+    return loans;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public void setIsbn(String isbn) {
+    this.isbn = isbn;
+  }
+
+  public void setPublishedDate(LocalDate publishedDate) {
+    this.publishedDate = publishedDate;
+  }
+
+  public void setPageCount(int pageCount) {
+    this.pageCount = pageCount;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 }
